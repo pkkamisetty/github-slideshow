@@ -1,0 +1,17 @@
+-- Package Name: CHG0038658-[IMR]-e003449-009723-DMND0087821-IMR Database Report Revisions
+-- Client Contact: Praveen Kamisetty, Email: pkamisetty@hms.com, Contact number: 614-323-4317
+-- Reason for change: Add new columns to implement medical director sign off tab
+-- Permissions: standard
+-- Special instructions: None
+-- CDC Replication Enabled  : No
+
+
+ALTER TABLE "ECPROD"."IMR"."CASE"
+	ADD COLUMN "MD_NAME_ID" INTEGER
+	ADD COLUMN "MD_DECISION_ID" INTEGER
+	ADD COLUMN "MD_QLTY_DTM" TIMESTAMP
+	ADD COLUMN "MD_SIGN_OFF_DTM" TIMESTAMP
+	ADD COLUMN "MD_COMMENTS_DSC" CLOB(1048576);
+
+
+grant select on table "IMR"."CASE" to group ec__psel, ec__pbat, ec__pweb, ec__pupd;
